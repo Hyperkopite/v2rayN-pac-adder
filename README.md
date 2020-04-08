@@ -1,7 +1,7 @@
 # v2rayN-pac-adder
 ![Alt Text](https://github.com/Hyperkopite/v2rayN-pac-adder/blob/master/s1.png)
                                                                                                                         
-A tool to conveniently add needed URLs to PAC list of v2rayN (For Windows only currently)
+A tool to conveniently add needed URLs to PAC list of v2rayN (For Windows only currently)</br>
 一个帮助你方便地添加网址到v2rayN的PAC列表的小工具（暂时只支持Windows系统）
 > How to use | 如何使用</br>
 
