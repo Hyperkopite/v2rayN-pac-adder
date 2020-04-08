@@ -1,7 +1,7 @@
 # v2rayN-pac-adder
 ![Alt Text](https://github.com/Hyperkopite/v2rayN-pac-adder/blob/master/s1.png)
                                                                                                                         
-A tool to conveniently add needed URLs to PAC list of v2rayN
+A tool to conveniently add needed URLs to PAC list of v2rayN (For Windows only at this time)
 > How to use</br>
 
 [1] Place the update_pac.py under v2rayN directory (where the v2rayN.exe is located).</br></br>
