@@ -5,13 +5,30 @@ import time
 import keyboard
 import pyperclip
 import os
-path_pac = 'pac.txt'
-delim_line = '---------------------------------------------------------------------------------------------------'
+path_pac = r'pac.txt'
+delim_line = '--------------------------------------------------------------------------------------------------------------------------------------------------------------'
 
 
 def reboot_server_process():
     os.system('taskkill /f /im v2rayN.exe')
     os.system('start v2rayN.exe')
+    print('v2rayN service restarted.')
+
+
+def print_banner():
+    print('\n')
+    print('          .d8888b.                            888b    888       8888888b.      d8888  .d8888b.                      888      888                  \n'
+          '         d88P  Y88b                           8888b   888       888   Y88b    d88888 d88P  Y88b                     888      888                  \n'
+          '                888                           88888b  888       888    888   d88P888 888    888                     888      888                  \n'
+          '888  888      .d88P 888d888  8888b.  888  888 888Y88b 888       888   d88P  d88P 888 888               8888b.   .d88888  .d88888  .d88b.  888d888 \n'
+          '888  888  .od888P"  888P"       "88b 888  888 888 Y88b888       8888888P"  d88P  888 888                  "88b d88" 888 d88" 888 d8P  Y8b 888P"   \n'
+          'Y88  88P d88P"      888     .d888888 888  888 888  Y88888       888       d88P   888 888    888       .d888888 888  888 888  888 88888888 888     \n'
+          ' Y8bd8P  888"       888     888  888 Y88b 888 888   Y8888       888      d8888888888 Y88b  d88P       888  888 Y88b 888 Y88b 888 Y8b.     888     \n'
+          '  Y88P   888888888  888     "Y888888  "Y88888 888    Y888       888     d88P     888  "Y8888P"        "Y888888  "Y88888  "Y88888  "Y8888  888     \n'
+          '                                          888                                                                                                     \n'
+          '                                     Y8b d88P                                                                                                     \n'
+          '                                      "Y88P"                                                                                                      \n'
+          '\nCopyright (c) 2020. Xinyi Chen | https://github.com/Hyperkopite/v2rayN-pac-adder')
 
 
 def go():
@@ -27,7 +44,7 @@ def go():
             url_cut = re.search(re.compile(r'//[\w\.-:]+/'), url)
             if url_cut is not None:
                 url = url_cut.group()
-                print(url)
+                # print(url)
             domain = re.search(re.compile(r'((?<=\.)([\w-]+\.){1,2}\w+(?=/|$|:))'), url)
             if domain is None:
                 domain = re.search(re.compile(r'(?<=//)([\w-]+\.){1,2}\w+(?=/|$|:)'), url)
@@ -60,7 +77,7 @@ def go():
             if is_exist:
                 print('\nDomain [' + domain + '] already exists!')
             else:
-                print('\n[' + domain + '] added to PAC list')
+                print('\n[' + domain + '] added to PAC list\n')
                 reboot_server_process()
         except Exception as e:
             print(e)
@@ -68,4 +85,5 @@ def go():
 
 
 if __name__ == '__main__':
+    print_banner()
     go()
