@@ -4,7 +4,10 @@
 A tool to conveniently add needed URLs to PAC list of v2rayN (For Windows only currently)</br>
 一个帮助你方便地添加网址到v2rayN的PAC列表的小工具（暂时只支持Windows系统）
 > How to use | 如何使用</br>
-
+***.exe：***</br>
+[1] For convenience, I also packed the .py script to .exe executable, you can run this without dependency to Python environment. Usage is same as below.</br>
+[1] 为了方便起见，也提供由py文件打包成的exe，可以不依赖python环境直接在Windows下运行。使用方法同下。</br></br>
+***.py：***</br>
 [1] Place the update_pac.py under v2rayN directory (where the v2rayN.exe is located).</br>
 [1] 将update_pac.py放到v2rayN目录下，也就是v2rayN.exe所在的地方。</br></br>
 [2] Enter v2rayN directory in powershell or cmd.</br>
