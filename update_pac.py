@@ -1,26 +1,12 @@
 # coding=utf-8
 # Copyright (c) 2020. Xinyi Chen
 import re
-import pyautogui as pag
 import time
 import keyboard
 import pyperclip
 import os
-path_pac = r'D:\v2rayN-Core\pac.txt'
+path_pac = 'pac.txt'
 delim_line = '---------------------------------------------------------------------------------------------------'
-
-
-def reboot_server_pag():
-    pag.doubleClick(1875, 862)
-    time.sleep(0.5)
-    pag.hotkey('alt', 'space', 'x')
-
-    # click 'current server'
-    pag.click(278, 61)
-    # click 'reboot server'
-    pag.doubleClick(284, 82)
-    # click 'close'
-    pag.click(1827, 12)
 
 
 def reboot_server_process():
@@ -82,7 +68,4 @@ def go():
 
 
 if __name__ == '__main__':
-    # while 1:
-    #     print(pag.position())
-    #     time.sleep(0.5)
     go()
