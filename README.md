@@ -12,7 +12,7 @@ A tool to conveniently add needed URLs to PAC list of v2rayN (For Windows only c
 [3] Execute "python3 update_pac.py".</br>
 [3] 执行"python3 update_pac.py"命令。</br></br>
 [4] When you are browsing any website which you find you need to add it to pac list, simply copy it from browser address bar and press      "ctrl + alt + insert" hotkey, the address will be added to pac list of v2rayN and service will be automatically restarted.</br>
-[4] 当你在PAC模式下使用v2rayN浏览某个网站时，如果觉得这个网址需要使用v2rayN访问，只需从浏览器地址栏复制网址，按下"ctrl + alt + insert"，即可自动添加到v2rayN访问列表。</br></br>
+[4] 当你在PAC模式下使用v2rayN浏览某个网站时，如果觉得这个网址需要使用v2rayN访问，只需从浏览器地址栏复制网址，然后按下"ctrl + alt + insert"，即可自动添加到v2rayN访问列表。</br></br>
 [5] Refresh the page to browse via v2rayN.</br>
 [5] 刷新页面即可。</br></br>
 **IMPORTANT**: Run the script as administrator, or it may not be able to respond normally when running in background!</br>
