@@ -90,7 +90,7 @@ def del_from_pac():
                 match = match.group().strip('\"')
                 if match != '|' and (match.find(domain) != -1 or match == domain):
                     lines[cntr_line] = ''
-                    print('\nDomain [' + match + '] has been removed successfully!')
+                    print('\nDomain [' + match + '] has been removed successfully!\n')
                     is_exist = True
             cntr_line += 1
         f_pac.writelines(lines)
