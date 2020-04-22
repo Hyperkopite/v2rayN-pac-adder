@@ -64,7 +64,7 @@ def add_to_pac():
                 cntr_line += 1
         f_pac.writelines(lines)
     if is_exist:
-        print('\nDomain [' + domain + '] already exists!')
+        print('\n[' + domain + '] already exists!')
     else:
         print('\n[' + domain + '] added to PAC list\n')
         reboot_server_process()
@@ -90,7 +90,7 @@ def del_from_pac():
                 match = match.group().strip('\"')
                 if match != '|' and (match.find(domain) != -1 or match == domain):
                     lines[cntr_line] = ''
-                    print('\nDomain [' + match + '] has been removed successfully!\n')
+                    print('\n[' + match + '] has been removed successfully!\n')
                     is_exist = True
             cntr_line += 1
         f_pac.writelines(lines)
