@@ -10,8 +10,8 @@ A tool to conveniently add needed URLs to PAC list of v2rayN (For Windows only c
 ***.py：***</br>
 [1] Place the update_pac.py under v2rayN directory (where the v2rayN.exe is located).</br>
 [1] 将update_pac.py放到v2rayN目录下，也就是v2rayN.exe所在的地方。</br></br>
-[2] Enter v2rayN directory in powershell or cmd.</br>
-[2] 在powershell或者cmd中进入到该目录。</br></br>
+[2] Enter v2rayN directory in powershell or cmd **with administrator role**.</br>
+[2] 以**管理员身份**运行powershell或者cmd，进入到该目录。</br></br>
 [3] Execute "python3 update_pac.py" and minimize the window to keep it running in background.</br>
 [3] 执行"python3 update_pac.py"命令，最小化窗口让其在后台运行。</br></br>
 [4] When you are browsing any website needs to be added to PAC list, simply copy it from browser address bar and press      "ctrl + alt + insert" hotkey, the address will be added to PAC list of v2rayN and service will be automatically restarted.</br>
