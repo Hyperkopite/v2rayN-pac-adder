@@ -31,7 +31,7 @@ def print_banner():
         '                                     Y8b d88P                                                                                                     \n'
         '                                      "Y88P"                                                                                                      \n'
         '\nCopyright (c) 2020. Xinyi Chen | https://github.com/Hyperkopite/v2rayN-pac-adder')
-    print(delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nWaiting for your command...')
+    print(delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
     pag.keyDown('alt')
     pag.keyDown('space')
     pag.press('x')
@@ -43,7 +43,7 @@ def add_to_pac():
     domain = parse_url()
     if domain == '':
         print(
-            delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nWaiting for your command...')
+            delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
         return
     cntr_line = 0
     is_exist = False
@@ -68,7 +68,7 @@ def add_to_pac():
     else:
         print('\n[' + domain + '] added to PAC list\n')
         reboot_server_process()
-    print(delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nWaiting for your command...')
+    print(delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
 
 
 def del_from_pac():
@@ -77,7 +77,7 @@ def del_from_pac():
     is_exist = False
     if domain == '':
         print(
-            delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nWaiting for your command...')
+            delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
         return
     with open(path_pac, 'r+', encoding='utf-8') as f_pac:
         lines = f_pac.readlines()
@@ -99,7 +99,7 @@ def del_from_pac():
     else:
         print('\n[' + domain + '] doesn\'t exist!')
     print(
-        delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nWaiting for your command...')
+        delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
 
 
 def parse_url():
@@ -126,14 +126,14 @@ def parse_url():
 
 def go():
     try:
-        keyboard.add_hotkey('ctrl + shift + insert', add_to_pac)
-        keyboard.add_hotkey('ctrl + shift + delete', del_from_pac)
+        keyboard.add_hotkey('shift + alt + insert', add_to_pac)
+        keyboard.add_hotkey('shift + alt + delete', del_from_pac)
     except Exception as e:
         print(e)
-        keyboard.remove_hotkey('ctrl + shift + insert')
-        keyboard.remove_hotkey('ctrl + shift + delete')
+        keyboard.remove_hotkey('shift + alt + insert')
+        keyboard.remove_hotkey('shift + alt + delete')
         print(
-            delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nWaiting for your command...')
+            delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
         return go()
     while 1:
         pass
