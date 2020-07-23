@@ -7,13 +7,22 @@ import pyperclip
 import os
 
 path_pac = r'pac.txt'  # path of pac.txt
-delim_line = '--------------------------------------------------------------------------------------------------------------------------------------------------------------'
+delim_line = '-' * 158
 
 
 def reboot_server_process():
     os.system('taskkill /f /im v2rayN.exe')
     os.system('start v2rayN.exe')
     print('v2rayN service restarted.')
+
+
+def print_tip(exception: bool):
+    if exception:
+        print(
+            delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nJust was back from exception :), waiting for your command...')
+    else:
+        print(
+            delim_line + '\n[*]Add: ctrl + shift + insert\n[*]Delete: ctrl + shift + del\n\nWaiting for your command...')
 
 
 def print_banner():
@@ -31,7 +40,7 @@ def print_banner():
         '                                     Y8b d88P                                                                                                     \n'
         '                                      "Y88P"                                                                                                      \n'
         '\nCopyright (c) 2020. Xinyi Chen | https://github.com/Hyperkopite/v2rayN-pac-adder')
-    print(delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
+    print_tip(False)
     pag.keyDown('alt')
     pag.keyDown('space')
     pag.press('x')
@@ -42,8 +51,7 @@ def print_banner():
 def add_to_pac():
     domain = parse_url()
     if domain == '':
-        print(
-            delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
+        print_tip(False)
         return
     cntr_line = 0
     is_exist = False
@@ -64,11 +72,11 @@ def add_to_pac():
                 cntr_line += 1
         f_pac.writelines(lines)
     if is_exist:
-        print('\n[' + domain + '] already exists!')
+        print('\nDomain [' + domain + '] already exists!')
     else:
         print('\n[' + domain + '] added to PAC list\n')
         reboot_server_process()
-    print(delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
+    print_tip(False)
 
 
 def del_from_pac():
@@ -76,8 +84,7 @@ def del_from_pac():
     cntr_line = 0
     is_exist = False
     if domain == '':
-        print(
-            delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
+        print_tip(False)
         return
     with open(path_pac, 'r+', encoding='utf-8') as f_pac:
         lines = f_pac.readlines()
@@ -88,9 +95,9 @@ def del_from_pac():
             # print(line, domain)
             if match is not None:
                 match = match.group().strip('\"')
-                if match != '|' and (match.find(domain) != -1 or match == domain):
+                if match != '|' and (match.find(domain) != -1 or match == domain or match[1:] == domain):
                     lines[cntr_line] = ''
-                    print('\n[' + match + '] has been removed successfully!\n')
+                    print('\nDomain [' + match + '] has been removed successfully!')
                     is_exist = True
             cntr_line += 1
         f_pac.writelines(lines)
@@ -98,14 +105,13 @@ def del_from_pac():
         reboot_server_process()
     else:
         print('\n[' + domain + '] doesn\'t exist!')
-    print(
-        delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
+    print_tip(False)
 
 
 def parse_url():
     no_dot = False
     url = str(pyperclip.paste())
-    print('URL: ' + url)
+    print('\nURL: ' + url)
     url_cut = re.search(re.compile(r'//[\w.-:]+/'), url)
     if url_cut is not None:
         url = url_cut.group()
@@ -113,7 +119,7 @@ def parse_url():
     if domain is None:
         domain = re.search(re.compile(r'(?<=//)([\w-]+\.){1,2}\w+(?=/|$|:)'), url)
         if domain is None:
-            print('Failed to parse the URL, wanna manually input? [Y(y) / N(n)]')
+            print('\nFailed to parse the URL, wanna manually input? [Y(y) / N(n)]')
             if 'Yy'.find(input()) != -1:
                 url = input('\nURL: ')
             else:
@@ -126,17 +132,16 @@ def parse_url():
 
 def go():
     try:
-        keyboard.add_hotkey('shift + alt + insert', add_to_pac)
-        keyboard.add_hotkey('shift + alt + delete', del_from_pac)
+        keyboard.add_hotkey('ctrl + shift + insert', add_to_pac)
+        keyboard.add_hotkey('ctrl + shift + delete', del_from_pac)
+        while 1:
+            pass
     except Exception as e:
         print(e)
-        keyboard.remove_hotkey('shift + alt + insert')
-        keyboard.remove_hotkey('shift + alt + delete')
-        print(
-            delim_line + '\n[*]Add: shift + alt + insert\n[*]Delete: shift + alt + del\n\nWaiting for your command...')
+        keyboard.remove_hotkey('ctrl + shift + insert')
+        keyboard.remove_hotkey('ctrl + shift + delete')
+        print_tip(True)
         return go()
-    while 1:
-        pass
 
 
 if __name__ == '__main__':
