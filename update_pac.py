@@ -111,7 +111,7 @@ def del_from_pac():
 def parse_url():
     no_dot = False
     url = str(pyperclip.paste())
-    print('\nURL: ' + url)
+    print('URL: ' + url)
     url_cut = re.search(re.compile(r'//[\w.-:]+/'), url)
     if url_cut is not None:
         url = url_cut.group()
@@ -119,7 +119,7 @@ def parse_url():
     if domain is None:
         domain = re.search(re.compile(r'(?<=//)([\w-]+\.){1,2}\w+(?=/|$|:)'), url)
         if domain is None:
-            print('\nFailed to parse the URL, wanna manually input? [Y(y) / N(n)]')
+            print('Failed to parse the URL, wanna manually input? [Y(y) / N(n)]')
             if 'Yy'.find(input()) != -1:
                 url = input('\nURL: ')
             else:
@@ -135,11 +135,11 @@ def go():
         keyboard.add_hotkey('ctrl + shift + insert', add_to_pac)
         keyboard.add_hotkey('ctrl + shift + delete', del_from_pac)
         while 1:
-            pass
+            keyboard.wait()
     except Exception as e:
         print(e)
-        keyboard.remove_hotkey('ctrl + shift + insert')
-        keyboard.remove_hotkey('ctrl + shift + delete')
+        keyboard.remove_hotkey(add_to_pac())
+        keyboard.remove_hotkey(del_from_pac())
         print_tip(True)
         return go()
 
